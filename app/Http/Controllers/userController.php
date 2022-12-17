@@ -142,7 +142,7 @@ class userController extends Controller
         }
     }
 
-    public function updateUsersById(Request $request, $id)
+    public function updateUsersById(Request $request)
     {
 
         Log::info('updating user by id');
@@ -161,7 +161,9 @@ class userController extends Controller
                 ], 400);
             }
 
-            $user = User::query()->find($id);
+            $user_id = auth()->user()->id;
+
+            $user = User::query()->find($user_id);
 
             $user->name = $request->input('name');
             $user->nickname = $request->input('nickname');

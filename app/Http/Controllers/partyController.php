@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Party;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -118,7 +119,7 @@ class partyController extends Controller
         Log::info('updating party by id');
 
         try {
-            
+
             $validator = Validator::make($request->all(), [
                 'name' => 'required|max:255',
                 'game_id' => 'required'
@@ -183,22 +184,24 @@ class partyController extends Controller
 
         try {
 
-            // $parties = DB::select(`select * from bitnami_myapp.users join bitnami_myapp.parties where parties.user_id = 1`);
-            // $parties = DB::select(`select * from users join parties where parties.id = 1`);
+            // $parties = DB::select(`* from bitnami_myapp.messages join bitnami_myapp.parties where messages.party_id = $id`);
+            // $parties = DB::select(`* from messages join parties where party_id = $id`);
 
-            $parties = Party::where(function ($query) {
-                $query
-                    ->select('*')
-                    ->from('messages')
-                    ->whereColumn('parties.id', 'messages.party_id');
-            }, $id)->get();
+            // $parties = Message::where(function ($query) {
+            //     $query
+            //         ->whereColumn('part_id');
+            // }, $id)->get();
+
+            $messages = DB::table('messages')
+                ->where('party_id', '=', $id)
+                ->get();
 
 
 
             return response([
                 'success' => true,
                 'message' => 'party messages retrieved successfully',
-                'data' => $parties
+                'data' => $messages
             ], 200);
 
         } catch (\Throwable $th) {
@@ -216,24 +219,27 @@ class partyController extends Controller
 
         try {
             $user_id = auth()->user()->id;
-            $partyId = $id; 
+            $partyId = $id;
             $party = Party::find($partyId);
 
-            if(!$party) {
+            if (!$party) {
                 return response()->json([
                     'success' => true,
                     'message' => 'No existe party.'
                 ], 404);
             }
 
-            $party->users()->attach($user_id);
+            DB::table('parties_users')->insert([
+                'user_id' => $user_id,
+                'party_id' => $partyId
+            ]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Se ha añadido el usuario a la party'
             ], 200);
         } catch (\Throwable $th) {
-            Log::error("Error añadiendo el usuario a la party: ".$th->getMessage());
+            Log::error("Error añadiendo el usuario a la party: " . $th->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -247,10 +253,10 @@ class partyController extends Controller
 
         try {
             $user_id = auth()->user()->id;
-            $partyId = $id; 
+            $partyId = $id;
             $party = Party::find($partyId);
 
-            if(!$party) {
+            if (!$party) {
                 return response()->json([
                     'success' => true,
                     'message' => 'No existe party.'
@@ -264,7 +270,7 @@ class partyController extends Controller
                 'message' => 'Se ha eliminado el usuario a la party'
             ], 200);
         } catch (\Throwable $th) {
-            Log::error("Error eliminando el usuario de la party: ".$th->getMessage());
+            Log::error("Error eliminando el usuario de la party: " . $th->getMessage());
 
             return response()->json([
                 'success' => false,

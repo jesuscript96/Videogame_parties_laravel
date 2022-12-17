@@ -30,8 +30,8 @@ class UserSeeder extends Seeder
                 [
                     'name' => 'admin',
                     'nickname' => 'usernickuser',
-                    'password' => 'pruebasprobando',
-                    'mail' => "user@user.com",
+                    'password' => '$2y$10$1H6oIAsO8WMA7nRt1YTXCOS58HTNJZv7Q7EYAAHTg96qh9a3VCXPC',
+                    'mail' => "admin@admin.com",
                     'role' => true,
                 ]
             ]

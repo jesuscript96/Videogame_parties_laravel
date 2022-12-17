@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Validator;
 // use App\Http\Controllers\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 // use Tymon\JWTAuth\Facades\Response;
-use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
@@ -70,6 +73,24 @@ class AuthController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Sorry, the user cannot be logged out'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+    public function userLogout(Request $request)
+    {
+        try {
+            Auth::logout();
+            return response()->json([
+                'success' => true,
+                'message' => 'User logged out successfully'
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, the user cannot be logged out or was not logged in'
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
