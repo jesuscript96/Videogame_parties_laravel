@@ -29,10 +29,11 @@ Route::group([
     Route::get('/me', [AuthController::class, 'me']);
     Route::get('/users/parties/created', [userController::class, 'getPartiesFromUser']);
     Route::get('/users/games/created', [userController::class, 'getGamesFromUser']);
+    Route::put('/users/update', [userController::class, 'updateUsersById']);
     // PARTY CRUD
     Route::post('/parties/newparty', [partyController::class, 'createParty']);
     Route::post('/parties/newuser/{id}', [partyController::class, 'addUserToParty']);
-    Route::delete('/parties/deleteuser', [partyController::class, 'deleteUserFromParty']);
+    Route::delete('/parties/deleteuser/{id}', [partyController::class, 'deleteUserFromParty']);
     // GAME CRUD
     Route::post('/games/newgame', [gameController::class, 'createGame']);
     // MESSAGE CRUD
@@ -47,7 +48,6 @@ Route::group([
     Route::get('/allusers', [userController::class, 'getAllUsers']);
     Route::get('/users/all', [userController::class, 'getUsers']);
     Route::get('/users/{id}', [userController::class, 'getUsersById']);
-    Route::put('/users/update', [userController::class, 'updateUsersById']);
     Route::delete('/users/delete/{id}', [userController::class, 'deleteUsersById']);
     // PARTY CRUD
     Route::put('/parties/update/{id}', [partyController::class, 'updatePartyById']);
@@ -72,8 +72,8 @@ Route::get('/parties/find/{id}', [partyController::class, 'getPartiesById']);
 
 // GAME CRUD
 
-Route::get('/games/all', [gameController::class, 'getPartiesFromGame']);
-Route::get('/games/parties/{id}', [gameController::class, 'getGames']);
+Route::get('/games/all', [gameController::class, 'getGames']);
+Route::get('/games/parties/{id}', [gameController::class, 'getPartiesFromGame']);
 Route::get('/games/find/{id}', [gameController::class, 'getGameById']);
 
 

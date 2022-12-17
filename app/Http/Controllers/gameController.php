@@ -122,18 +122,9 @@ class gameController extends Controller
         Log::info('getting game parties by id');
 
         try {
-
-            // $parties = DB::select(`select * from bitnami_myapp.users join bitnami_myapp.parties where parties.user_id = 1`);
-            // $parties = DB::select(`select * from users join parties where parties.id = 1`);
-
-            $parties = Party::where(function ($query) {
-                $query
-                    ->select('*')
-                    ->from('games')
-                    ->whereColumn('parties.game_id', 'games.id');
-            }, $id)->get();
-
-
+            $parties = DB::table('parties')
+            ->where('game_id', '=', $id)
+            ->get();
 
             return response([
                 'success' => true,

@@ -254,7 +254,10 @@ class partyController extends Controller
         try {
             $user_id = auth()->user()->id;
             $partyId = $id;
-            $party = Party::find($partyId);
+            $party = DB::table('parties_users')
+                ->where('party_id', '=', $partyId)
+                ->where('user_id', '=', $user_id)
+                ->delete();
 
             if (!$party) {
                 return response()->json([
@@ -262,9 +265,7 @@ class partyController extends Controller
                     'message' => 'No existe party.'
                 ], 404);
             }
-
-            $party->users()->detach($user_id);
-
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Se ha eliminado el usuario a la party'
