@@ -7,59 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About the proyect
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto consiste en una estructura Backend completa (DDBB+PHP+Laravel) con una APIREST para el desarrollo de una aplicación web LFG que permita que los empleados puedan contactar con otros compañeros para formar grupos para jugar a un videojuego, con el objetivo de poder compartir un rato de ocio afterwork. Se ha hecho uso de una autenticación en forma de jwt a través de un middleware para restringir las funcionalidades según el tipo de usuario.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Las funcionalidades de la app
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+● F.1 Los usuarios se pueden registrar a la aplicación, estableciendo un usuario/contraseña.
+● F.2 Los usuarios pueden autenticarse a la aplicación haciendo login.
+● F.3 Los usuarios pueden crear Partídas (grupos) para un determinado videojuego. (requiere bearer auth de usuario logeado)
+● F.4 Los usuarios pueden buscar Partídas seleccionando un videojuego. (requiere bearer auth de usuario logeado)
+● F.5 Los usuarios pueden entrar y salir de una Party. (requiere bearer auth de usuario logeado)
+● F.6 Los usuarios pueden enviar mensajes a la Party. (requiere bearer auth de usuario logeado)
+● F.7 Los mensajes que existan en una Party se visualizan como un chat común. (requiere bearer auth de usuario logeado)
+● F.8 Los usuarios pueden introducir y modificar sus datos de perfil, por ejemplo, su name y nickname. (requiere bearer auth de usuario logeado)
+● F.9 Los usuarios pueden hacer logout de la aplicación web. (requiere bearer auth de usuario logeado)
 
-## Learning Laravel
+A continuación la colección de POSTMAN para poder testear los endpoints:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+https://drive.google.com/file/d/1ZfWcflbPviDyw8tFZeYFFAeg-I4RvKRd/view?usp=sharing
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Además, la aplicación está preparada para más funcionalidades que se encuentran en el archivo "api.php".
 
 ## License
 
