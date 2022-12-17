@@ -13,14 +13,14 @@ Este proyecto consiste en una estructura Backend completa (DDBB+PHP+Laravel) con
 
 ## Las funcionalidades de la app
 
-● F.1 Los usuarios se pueden registrar a la aplicación, estableciendo un usuario/contraseña.
-● F.2 Los usuarios pueden autenticarse a la aplicación haciendo login.
-● F.3 Los usuarios pueden crear Partídas (grupos) para un determinado videojuego. (requiere bearer auth de usuario logeado)
-● F.4 Los usuarios pueden buscar Partídas seleccionando un videojuego. (requiere bearer auth de usuario logeado)
-● F.5 Los usuarios pueden entrar y salir de una Party. (requiere bearer auth de usuario logeado)
-● F.6 Los usuarios pueden enviar mensajes a la Party. (requiere bearer auth de usuario logeado)
-● F.7 Los mensajes que existan en una Party se visualizan como un chat común. (requiere bearer auth de usuario logeado)
-● F.8 Los usuarios pueden introducir y modificar sus datos de perfil, por ejemplo, su name y nickname. (requiere bearer auth de usuario logeado)
+● F.1 Los usuarios se pueden registrar a la aplicación, estableciendo un usuario/contraseña. <br>
+● F.2 Los usuarios pueden autenticarse a la aplicación haciendo login.<br>
+● F.3 Los usuarios pueden crear Partídas (grupos) para un determinado videojuego. (requiere bearer auth de usuario logeado)<br>
+● F.4 Los usuarios pueden buscar Partídas seleccionando un videojuego. (requiere bearer auth de usuario logeado)<br>
+● F.5 Los usuarios pueden entrar y salir de una Party. (requiere bearer auth de usuario logeado)<br>
+● F.6 Los usuarios pueden enviar mensajes a la Party. (requiere bearer auth de usuario logeado)<br>
+● F.7 Los mensajes que existan en una Party se visualizan como un chat común. (requiere bearer auth de usuario logeado)<br>
+● F.8 Los usuarios pueden introducir y modificar sus datos de perfil, por ejemplo, su name y nickname. (requiere bearer auth de usuario logeado)<br>
 ● F.9 Los usuarios pueden hacer logout de la aplicación web. (requiere bearer auth de usuario logeado)
 
 A continuación la colección de POSTMAN para poder testear los endpoints:
